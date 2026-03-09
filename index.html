@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- improved viewport for true mobile flexibility -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Springfield elementary · meet the leaders</title>
+    <!-- Font Awesome 6 (free) for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+        /* === global reset & base === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            /* waterfall picture for the whole website */
+            background-image: url('https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center 30%;
+            background-attachment: fixed;
+            color: #1e2f4e;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            /* fallback color while image loads */
+            background-color: #c4ddff;
+        }
+
+        /* flexible container - keep cards readable with slight overlay */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        /* header & navigation - keep solid background for readability */
+        .site-header {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 20, 40, 0.06);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: fadeIn 1s ease;
+            flex-wrap: wrap;
+        }
+
+        .logo-picture {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #f0f4fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,40,70,0.1);
+            border: 2px solid white;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .logo-picture:hover {
+            transform: rotate(8deg) scale(1.05);
+        }
+
+        .logo-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .logo-text h1 {
+            font-size: clamp(1.2rem, 5vw, 1.7rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0b2a41;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
+            font-weight: 400;
+            color: #4a6f8f;
+            display: block;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: clamp(4px, 2vw, 8px);
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 8px clamp(10px, 2.5vw, 18px);
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            color: #1e3a5f;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }
+        /* allow wrap on very small screens */
+        @media (max-width: 420px) {
+            .nav-link { white-space: normal; }
+        }
+
+        .nav-link:hover {
+            background: #e3ecf5;
+            border-color: #b6cde0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,40,70,0.1);
+        }
+
+        .nav-link.active {
+            background: #1e3c5c;
+            color: white;
+            box-shadow: 0 4px 10px rgba(20, 60, 120, 0.2);
+        }
+
+        /* main content - cards get white background to stand out from waterfall */
+        main {
+            flex: 1;
+            padding: 48px 0;
+        }
+
+        .page-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(3px);
+            border-radius: 32px;
+            padding: clamp(24px, 5vw, 44px);
+            box-shadow: 0 15px 35px rgba(30, 60, 90, 0.15);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255,255,255,0.4);
+            animation: scaleIn 0.5s ease-out;
+            transform-origin: top center;
+        }
+
+        .page-card:hover {
+            box-shadow: 0 25px 45px rgba(20, 60, 100, 0.25);
+            background: rgba(255, 255, 255, 0.96);
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(30, 60, 92, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(30, 60, 92, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(30, 60, 92, 0); }
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 6vw, 2.2rem);
+            font-weight: 500;
+            color: #0a253b;
+            margin-bottom: 16px;
+            border-left: 8px solid #4f8bc9;
+            padding-left: 24px;
+            animation: slideInLeft 0.6s ease;
+            word-break: break-word;
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        h3 {
+            font-size: clamp(1.3rem, 5vw, 1.6rem);
+            font-weight: 500;
+            margin: 32px 0 16px 0;
+            color: #1b3b5c;
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: #2e425b;
+            font-size: clamp(1rem, 3.5vw, 1.08rem);
+            word-break: break-word;
+        }
+
+        /* leadership image avatars */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 30px;
+            margin: 40px 0 30px;
+        }
+
+        .team-card {
+            background: #f5faff;
+            border-radius: 32px;
+            padding: 28px 24px 24px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #e0ecf9;
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.6s ease backwards;
+            animation-delay: calc(0.1s * var(--i, 0));
+        }
+
+        .team-card:nth-child(1) { --i: 1; }
+        .team-card:nth-child(2) { --i: 2; }
+        .team-card:nth-child(3) { --i: 3; }
+        .team-card:nth-child(4) { --i: 4; }
+        .team-card:nth-child(5) { --i: 5; }
+        .team-card:nth-child(6) { --i: 6; }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 40px -8px rgba(20, 60, 120, 0.25);
+            background: white;
+        }
+
+        .avatar-img {
+            width: clamp(100px, 30vw, 120px);
+            height: clamp(100px, 30vw, 120px);
+            border-radius: 50%;
+            margin: 0 auto 18px;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            background: #bed9f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #1e3c5c;
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover .avatar-img {
+            transform: scale(1.08) rotate(2deg);
+            border-color: #1e3c5c;
+            box-shadow: 0 12px 24px rgba(20, 60, 120, 0.2);
+        }
+
+        .team-card h4 {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: 600;
+            margin-bottom: 6px;
+            word-break: break-word;
+        }
+
+        .team-card .role {
+            font-weight: 600;
+            color: #2f6190;
+            letter-spacing: 0.3px;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            background: #dce9f5;
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 40px;
+            align-self: center;
+            transition: all 0.3s ease;
+            max-width: 100%;
+            word-break: break-word;
+        }
+
+        .team-card:hover .role {
+            background: #1e3c5c;
+            color: white;
+        }
+
+        .team-card .bio {
+            font-size: 1rem;
+            color: #1f3f5c;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
+        .extra-content {
+            margin-top: 10px;
+            padding-top: 14px;
+            border-top: 2px dashed #acc9e5;
+            font-size: 0.95rem;
+            color: #1d4468;
+            background: rgba(255,255,255,0.6);
+            border-radius: 20px;
+            padding: 16px 12px;
+            text-align: left;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.8s ease;
+            word-break: break-word;
+        }
+
+        .extra-content i {
+            color: #2f6190;
+            margin-right: 6px;
+            width: 20px;
+        }
+
+        .teacher-note {
+            margin-top: 30px;
+            background: #e9f1fa;
+            padding: 20px 28px;
+            border-radius: 50px;
+            color: #1d3f60;
+            font-weight: 500;
+            animation: pulseGlow 2s infinite;
+            word-break: break-word;
+        }
+
+        /* academics forms */
+        .forms-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 40px 0 20px;
+        }
+
+        .form-card {
+            background: #f2f7ff;
+            border-radius: 30px;
+            padding: clamp(20px, 4vw, 30px);
+            border-left: 8px solid #2f6190;
+            box-shadow: 0 8px 18px rgba(0,32,64,0.05);
+            transition: all 0.3s ease;
+            animation: slideInRight 0.5s ease backwards;
+            animation-delay: calc(0.1s * var(--j, 0));
+        }
+
+        .form-card:nth-child(1) { --j: 1; }
+        .form-card:nth-child(2) { --j: 2; }
+        .form-card:nth-child(3) { --j: 3; }
+        .form-card:nth-child(4) { --j: 4; }
+        .form-card:nth-child(5) { --j: 5; }
+
+        @keyframes slideInRight {
+            from { transform: translateX(30px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .form-card:hover {
+            transform: translateX(8px) scale(1.01);
+            box-shadow: 0 15px 25px rgba(20, 60, 100, 0.15);
+            background: white;
+            border-left-width: 12px;
+        }
+
+        .form-title {
+            font-size: clamp(1.3rem, 5vw, 1.8rem);
+            font-weight: 600;
+            color: #103450;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            word-break: break-word;
+        }
+
+        .form-title i {
+            color: #2f6190;
+            font-size: clamp(1.6rem, 6vw, 2rem);
+            width: 50px;
+            transition: transform 0.4s ease;
+        }
+
+        .form-card:hover .form-title i {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 180px));
+            gap: 12px 20px;
+        }
+
+        .subject-item {
+            background: white;
+            border-radius: 40px;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+            color: #1d3a57;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #d5e2f0;
+            transition: all 0.3s ease;
+            word-break: break-word;
+        }
+
+        .subject-item:hover {
+            transform: translateX(5px) scale(1.02);
+            background: #1e3c5c;
+            color: white;
+            border-color: #1e3c5c;
+            box-shadow: 0 8px 15px rgba(30, 60, 92, 0.2);
+        }
+
+        .subject-item:hover i {
+            color: white;
+        }
+
+        .subject-item i {
+            color: #3d74a8;
+            width: 24px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        /* ADMISSIONS & PAYMENTS STYLES */
+        .payments-details {
+            margin-top: 30px;
+            background: #f2f7fc;
+            border-radius: 32px;
+            padding: clamp(20px, 5vw, 32px);
+            border: 1px solid #cbe0f5;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .fee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .fee-item {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 30, 60, 0.05);
+            border-left: 5px solid #1e3c5c;
+            transition: all 0.3s ease;
+            word-break: break-word;
+        }
+
+        .fee-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 25px rgba(0, 40, 70, 0.15);
+            border-left-width: 8px;
+        }
+
+        .fee-item h4 {
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            color: #0b2f4a;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .fee-item h4 i {
+            color: #2f6190;
+            transition: transform 0.4s ease;
+        }
+
+        .fee-item:hover h4 i {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .fee-amount {
+            font-size: clamp(1.3rem, 5vw, 1.6rem);
+            font-weight: 700;
+            color: #1e3c5c;
+            margin: 10px 0 5px;
+        }
+
+        .fee-note {
+            color: #527a9f;
+            font-size: 0.95rem;
+        }
+
+        /* Bank account details */
+        .bank-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+            gap: 20px;
+            margin: 30px 0 20px;
+        }
+
+        .bank-card {
+            background: white;
+            border-radius: 28px;
+            padding: 22px 20px;
+            box-shadow: 0 6px 16px rgba(0, 40, 70, 0.08);
+            border: 1px solid #d2e3fc;
+            transition: all 0.4s ease;
+            word-break: break-word;
+        }
+
+        .bank-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 30px rgba(0, 40, 70, 0.2);
+            border-color: #1e3c5c;
+        }
+
+        .bank-card h4 {
+            font-size: clamp(1.2rem, 4vw, 1.4rem);
+            color: #103450;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #acc9e5;
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .bank-card h4 i {
+            transition: transform 0.4s ease;
+        }
+
+        .bank-card:hover h4 i {
+            transform: rotateY(180deg);
+        }
+
+        .bank-card p {
+            margin: 8px 0;
+            font-size: 1.05rem;
+        }
+
+        .bank-card strong {
+            color: #1e3c5c;
+        }
+
+        .in-person-payment {
+            background: #e9f2fa;
+            border-radius: 50px;
+            padding: 18px 26px;
+            margin: 25px 0 10px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            border: 1px solid #abc0da;
+            transition: all 0.3s ease;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .in-person-payment:hover {
+            background: #d4e4f5;
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,40,70,0.15);
+        }
+
+        .in-person-payment i {
+            font-size: 2.2rem;
+            color: #1e3c5c;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0 15px;
+        }
+
+        .method-badge {
+            background: white;
+            border-radius: 60px;
+            padding: 12px 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            box-shadow: 0 5px 12px rgba(0, 40, 70, 0.1);
+            border: 1px solid #bcd3eb;
+            transition: all 0.3s ease;
+        }
+
+        .method-badge:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: #1e3c5c;
+            color: white;
+            border-color: #1e3c5c;
+        }
+
+        .method-badge:hover i {
+            color: white;
+        }
+
+        .method-badge i {
+            font-size: 1.6rem;
+            color: #1e3c5c;
+            transition: color 0.3s ease;
+        }
+
+        .scholarship-note {
+            background: #ddeeff;
+            border-radius: 50px;
+            padding: 18px 26px;
+            margin-top: 25px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+            animation: pulseGlow 3s infinite;
+        }
+
+        .scholarship-note:hover {
+            background: #c5ddff;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0, 60, 120, 0.15);
+        }
+
+        .scholarship-note i {
+            font-size: 2.2rem;
+            color: #1e3c5c;
+        }
+
+        /* UPDATED CONTACT PAGE */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: 40px;
+            margin: 40px 0 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 28px;
+            padding: clamp(20px, 4vw, 28px);
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 30, 50, 0.08);
+            border: 1px solid #e2eefa;
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.6s ease backwards;
+            animation-delay: calc(0.1s * var(--k, 0));
+            word-break: break-word;
+        }
+
+        .contact-card:nth-child(1) { --k: 1; }
+        .contact-card:nth-child(2) { --k: 2; }
+        .contact-card:nth-child(3) { --k: 3; }
+
+        .contact-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 30px rgba(0, 40, 70, 0.15);
+        }
+
+        .contact-card h3 {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #1e3c5c;
+            border-left: 5px solid #4f8bc9;
+            padding-left: 16px;
+        }
+
+        .contact-detail-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+            padding: 8px 12px;
+            background: #f8fbff;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            flex-wrap: wrap;
+        }
+
+        .contact-detail-row:hover {
+            transform: translateX(5px);
+            background: #e1edfc;
+            box-shadow: 0 5px 12px rgba(0, 40, 70, 0.1);
+        }
+
+        .contact-detail-icon {
+            width: 40px;
+            height: 40px;
+            background: #1e3c5c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .contact-detail-row:hover .contact-detail-icon {
+            transform: rotate(360deg);
+            background: #2f6190;
+        }
+
+        .contact-detail-text {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .contact-detail-text a {
+            color: #1e3c5c;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            word-break: break-word;
+        }
+
+        .contact-detail-text a:hover {
+            color: #2f6190;
+            text-decoration: underline;
+            transform: translateX(2px);
+        }
+
+        .contact-detail-text .label {
+            font-size: 0.85rem;
+            color: #6d8eb0;
+            display: block;
+        }
+
+        .social-media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-contact-item {
+            background: #f0f7ff;
+            border-radius: 40px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #d5e5fa;
+        }
+
+        .social-contact-item:hover {
+            background: #1e3c5c;
+            color: white;
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 20px rgba(30, 60, 92, 0.3);
+        }
+
+        .social-contact-item:hover a {
+            color: white;
+        }
+
+        .social-contact-item i {
+            font-size: 1.6rem;
+            width: 32px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .social-contact-item:hover i {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .social-contact-item a {
+            color: #1e3c5c;
+            text-decoration: none;
+            font-weight: 500;
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .emergency-badge {
+            background: #ffecf0;
+            border-radius: 40px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-left: 6px solid #c44545;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            flex-wrap: wrap;
+        }
+
+        .emergency-badge:hover {
+            background: #ffdce4;
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(196, 69, 69, 0.2);
+        }
+
+        .emergency-badge i {
+            font-size: 2rem;
+            color: #c44545;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 12px;
+            background: #f3f9ff;
+            border-radius: 30px;
+            padding: 20px;
+        }
+
+        .hours-item {
+            text-align: center;
+            padding: 10px;
+            background: white;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .hours-item:hover {
+            transform: scale(1.05);
+            background: #1e3c5c;
+            color: white;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .hours-item:hover .day,
+        .hours-item:hover .time {
+            color: white;
+        }
+
+        .hours-item .day {
+            font-weight: 700;
+            color: #1e3c5c;
+        }
+
+        .hours-item .time {
+            color: #4f6f8f;
+        }
+
+        .map-placeholder {
+            background: #d9e8f5;
+            border-radius: 30px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e3c5c;
+            font-size: 1.1rem;
+            border: 2px dashed #8fb1d4;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .map-placeholder:hover {
+            background: #c5daf0;
+            border-color: #1e3c5c;
+            transform: scale(1.02);
+        }
+
+        .quick-contact-list {
+            list-style: none;
+        }
+
+        .quick-contact-list li {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background: #f4f9ff;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .quick-contact-list li:hover {
+            transform: translateX(5px);
+            background: #e1edfc;
+        }
+
+        .quick-contact-list a {
+            color: #1e3c5c;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+            flex-wrap: wrap;
+        }
+
+        .quick-contact-list i {
+            width: 30px;
+            color: #2f6190;
+            transition: transform 0.3s ease;
+        }
+
+        .quick-contact-list li:hover i {
+            transform: scale(1.2);
+        }
+        
+        /* style for clickable phone/email links */
+        .clickable-link {
+            color: #1e3c5c;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 2px 0;
+            word-break: break-word;
+        }
+        
+        .clickable-link:hover {
+            color: #2f6190;
+            text-decoration: underline;
+            transform: translateX(2px) scale(1.05);
+        }
+        
+        .clickable-link i {
+            margin-right: 6px;
+            font-size: 0.9rem;
+            color: #2f6190;
+        }
+
+        .site-footer {
+            background: #0b263b;
+            color: #e3ecf5;
+            padding: 40px 0 24px;
+            margin-top: 20px;
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+            gap: 40px;
+            margin-bottom: 36px;
+        }
+
+        .footer-col {
+            animation: fadeIn 0.8s ease backwards;
+            animation-delay: calc(0.1s * var(--l, 0));
+            word-break: break-word;
+        }
+
+        .footer-col:nth-child(1) { --l: 1; }
+        .footer-col:nth-child(2) { --l: 2; }
+        .footer-col:nth-child(3) { --l: 3; }
+        .footer-col:nth-child(4) { --l: 4; }
+
+        .footer-col p {
+            color: #cbdbea;
+            margin: 16px 0 0 0;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-logo .logo-picture {
+            width: 48px;
+            height: 48px;
+        }
+
+        .footer-logo span {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: white;
+        }
+
+        .footer-col h5 {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .footer-col a {
+            color: #c0d4e9;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            word-break: break-word;
+        }
+
+        .footer-col a:hover {
+            color: white;
+            transform: translateX(8px) scale(1.05);
+        }
+
+        .footer-phone {
+            color: #c0d4e9;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-phone:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid #264c6b;
+            padding-top: 24px;
+            text-align: center;
+            color: #9fb8d0;
+            font-size: 0.95rem;
+            animation: fadeIn 1.2s ease;
+            word-break: break-word;
+        }
+
+        /* rotating gallery for home page */
+        .rotating-gallery {
+            width: 100%;
+            margin: 30px 0 10px;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0, 30, 50, 0.2);
+            aspect-ratio: 1200 / 320;
+            position: relative;
+            background: #dfecf7;
+            animation: scaleIn 0.8s ease;
+        }
+
+        .gallery-slide {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .gallery-slide.active {
+            opacity: 1;
+            z-index: 2;
+            transform: scale(1.02);
+        }
+
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 12px;
+            z-index: 5;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 20px;
+            background: #b3c9e0;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .dot.active-dot {
+            background: #1e3c5c;
+            width: 28px;
+            transform: scale(1.2);
+        }
+
+        .dot:hover {
+            background: #4f6f8f;
+            transform: scale(1.3);
+        }
+        
+        /* FAQ SECTION */
+        .faq-container {
+            margin: 40px 0 20px;
+        }
+        .faq-item {
+            background: #f2f7ff;
+            border-radius: 24px;
+            padding: 20px 30px;
+            margin-bottom: 16px;
+            border-left: 6px solid #2f6190;
+            box-shadow: 0 4px 10px rgba(0, 20, 40, 0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideInRight 0.5s ease backwards;
+            animation-delay: calc(0.1s * var(--m, 0));
+        }
+        .faq-item:nth-child(1) { --m: 1; }
+        .faq-item:nth-child(2) { --m: 2; }
+        .faq-item:nth-child(3) { --m: 3; }
+        .faq-item:nth-child(4) { --m: 4; }
+        .faq-item:nth-child(5) { --m: 5; }
+        .faq-item:nth-child(6) { --m: 6; }
+        .faq-item:nth-child(7) { --m: 7; }
+        
+        .faq-item:hover {
+            background: white;
+            box-shadow: 0 15px 25px rgba(30, 60, 90, 0.15);
+            transform: translateX(8px) scale(1.01);
+            border-left-width: 10px;
+        }
+        .faq-question {
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            font-weight: 600;
+            color: #103450;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .faq-question i {
+            color: #2f6190;
+            font-size: 1.6rem;
+            width: 36px;
+            transition: transform 0.4s ease;
+        }
+        .faq-item:hover .faq-question i {
+            transform: rotate(360deg) scale(1.1);
+        }
+        .faq-answer {
+            color: #2e425b;
+            font-size: 1.05rem;
+            padding-left: clamp(0px, 4vw, 52px);
+            line-height: 1.5;
+            border-left: 2px dotted #b3cde0;
+            margin-top: 5px;
+            word-break: break-word;
+        }
+        .faq-answer i {
+            margin-right: 8px;
+            color: #2f6190;
+        }
+        .faq-cta {
+            background: #e9f1fa;
+            border-radius: 60px;
+            padding: 18px 28px;
+            margin: 20px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+            animation: pulseGlow 2.5s infinite;
+        }
+        .faq-cta:hover {
+            background: #d4e4f5;
+            transform: scale(1.02);
+            box-shadow: 0 15px 25px rgba(0, 40, 70, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <!-- ... (rest of the HTML body remains exactly the same) ... -->
+    <!-- HEADER with logo as image -->
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo-area">
+            <div class="logo-picture">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%231e3c5c'/%3E%3Ctext x='50' y='70' font-size='48' text-anchor='middle' fill='white' font-family='Arial'%3E📚%3C/text%3E%3C/svg%3E"
+                     alt="Springfield logo (placeholder)" 
+                     title="upload your logo later">
+            </div>
+            <div class="logo-text">
+                <h1>Springfield <br>elementary</h1>
+                <span>EST. 2026 · INSPIRE · GROW · THRIVE</span>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <a href="#home" class="nav-link active" data-page="home"><i class="fas fa-home"></i> Home</a>
+            <a href="#about" class="nav-link" data-page="about"><i class="fas fa-leaf"></i> About</a>
+            <a href="#leadership" class="nav-link" data-page="leadership"><i class="fas fa-users"></i> Leadership</a>
+            <a href="#academics" class="nav-link" data-page="academics"><i class="fas fa-flask"></i> Academics</a>
+            <a href="#admissions" class="nav-link" data-page="admissions"><i class="fas fa-pencil-alt"></i> Admissions</a>
+            <a href="#contact" class="nav-link" data-page="contact"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="container">
+
+    <!-- home page with rotating photo gallery -->
+    <div id="home-page" class="page-card" style="display: block;">
+        <h2>Welcome, future leaders</h2>
+        <p style="font-size: 1.3rem; color:#245e8f;">A Joyful Place Where Curiosity Meets Excellence.</p>
+        
+        <!-- ROTATING GALLERY (three photos: student, school, campus life) -->
+        <div class="rotating-gallery" id="homeGallery">
+           <!-- 1. Happy diverse kids in classroom with teacher (engaged learning) -->
+    <img class="gallery-slide active" 
+         src="https://previews.123rf.com/images/lacheev/lacheev2302/lacheev230200189/198227890-teacher-and-students-having-fun-in-class-group-of-happy-elementary-school-children-standing-by.jpg" 
+         alt="Happy students raising hands in class" 
+         title="Engaged classroom moment">
+
+    <!-- 2. Teacher reading/storytelling circle with attentive kids -->
+    <img class="gallery-slide" 
+         src="https://as1.ftcdn.net/jpg/04/43/39/60/1000_F_443396092_h4AK6S6SeMSXXZ7w0puFE1TLSlyl6q9Y.jpg" 
+         alt="Teacher reading book to group of children" 
+         title="Storytime joy">
+
+    <!-- 3. Diverse kids playing actively outdoors on playground -->
+    <img class="gallery-slide" 
+         src="https://thumbs.dreamstime.com/b/group-diverse-children-actively-playing-outdoors-together-young-kids-enjoying-active-play-movement-colorful-playground-434616349.jpg" 
+         alt="Diverse children playing outdoors" 
+         title="Inclusive playground fun">
+
+    <!-- 4. Kids doing hands-on STEM/building project in classroom -->
+    <img class="gallery-slide" 
+         src="http://www.imthecheftoo.com/cdn/shop/articles/cool_stem_projects_for_elementary_students_sparking_curiosity_through_hands_on_fun.webp?v=1760609076" 
+         alt="Students building STEM projects together" 
+         title="Creative hands-on learning">
+
+    <!-- 5. Children exploring science experiment (close-up fun) -->
+    <img class="gallery-slide" 
+         src="https://i0.wp.com/themanylittlejoys.com/wp-content/uploads/2025/02/Oil-and-Water-Science-Experiment-for-Kids-1-1.jpg?fit=1440%2C960&ssl=1" 
+         alt="Child conducting colorful science experiment" 
+         title="Curiosity in action">
+
+    <!-- 6. Bright, colorful school playground with equipment -->
+    <img class="gallery-slide" 
+         src="https://thumbs.dreamstime.com/b/bright-sunlit-empty-playground-featuring-diverse-colorful-child-friendly-equipment-slides-climbing-structures-safety-405789071.jpg" 
+         alt="Colorful school playground" 
+         title="Safe and inviting outdoor space">
+
+    <!-- 7. Group of kids in reading/discussion circle in library -->
+    <img class="gallery-slide" 
+         src="https://www.nea.org/sites/default/files/styles/1200x630/public/2022-09/diverse-students-in-library-1920x1080.jpg?itok=Qijzu6_k" 
+         alt="Diverse students in library discussion" 
+         title="Buddy reading and sharing">
+
+    <!-- Optional 8th: Inclusive playground with accessible features -->
+    <img class="gallery-slide" 
+         src="https://playworld.com/wp-content/uploads/2023/11/PW_Inclusive-Web-Page-Images_01.jpg" 
+         alt="Inclusive playground with diverse children" 
+         title="Everyone plays together">
+
+</div>
+        <!-- simple dot indicators (user friendly) -->
+        <div class="gallery-dots" id="galleryDots">
+            <button class="dot active-dot" data-index="0"></button>
+            <button class="dot" data-index="1"></button>
+            <button class="dot" data-index="2"></button>
+            <button class="dot" data-index="3"></button>
+            <button class="dot" data-index="4"></button>
+            <button class="dot" data-index="5"></button>
+            <button class="dot" data-index="6"></button>
+        </div>
+
+        <p><i class="fas fa-bus" style="color:#1e3c5c;"></i> Transportation · Before/After Care · Hot Lunches · Inclusive Play</p>
+    </div>
+
+    <!-- about page -->
+    <div id="about-page" class="page-card" style="display: none;">
+        <h2>About our school</h2>
+        <p>Founded in 2026, Springfield Elementary has served families with a commitment to whole-child education. Small class sizes and project-based learning.</p>
+        <h3>Mission & values</h3>
+        <p>🧡 Respect, Responsibility, Resilience. We celebrate every child's unique background.</p>
+    </div>
+
+    <!-- LEADERSHIP PAGE with image avatars (placeholders) -->
+    <div id="leadership-page" class="page-card" style="display: none;">
+        <h2>✧ Meet the people who lead us ✧</h2>
+        <p>Get to know the dedicated educators and student leaders. <i class="fas fa-heart" style="color:#ba2d2d;"></i></p>
+
+        <div class="team-grid">
+
+            <!-- Head Of School -->
+            <div class="team-card">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%239bb7d4'/%3E%3Ctext x='50' y='70' font-size='44' text-anchor='middle' fill='white' font-family='Arial'%3EM%3C/text%3E%3C/svg%3E" alt="Dr Rivera" class="avatar-img">
+                <h4>Dr. Melissa Rivera</h4>
+                <div class="role">Head of School</div>
+                <div class="bio">Ed.D. in Educational Leadership. 18 years shaping joyful, inclusive elementary communities.</div>
+                <div class="extra-content"><i class="fas fa-comment"></i> <strong>more:</strong> “I believe every child brings a unique gift.” Coaches youth soccer, loves hiking.</div>
+            </div>
+
+            <!-- Deputy School Head -->
+            <div class="team-card">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23a8c3da'/%3E%3Ctext x='50' y='70' font-size='44' text-anchor='middle' fill='white' font-family='Arial'%3EJ%3C/text%3E%3C/svg%3E" alt="Mr Chen" class="avatar-img">
+                <h4>Mr. James Chen</h4>
+                <div class="role">Deputy School Head</div>
+                <div class="bio">Former 5th grade teacher, curriculum specialist. Passionate about project-based learning.</div>
+                <div class="extra-content"><i class="fas fa-lightbulb"></i> <strong>beyond:</strong> Leads school garden, chess club.</div>
+            </div>
+
+            <!-- Teacher -->
+            <div class="team-card">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23b1cce8'/%3E%3Ctext x='50' y='70' font-size='44' text-anchor='middle' fill='white' font-family='Arial'%3ES%3C/text%3E%3C/svg%3E" alt="Ms Patel" class="avatar-img">
+                <h4>Ms. Sofia Patel</h4>
+                <div class="role">Grade 3 teacher</div>
+                <div class="bio">M.Ed in literacy. “Every child is a storyteller.”</div>
+                <div class="extra-content"><i class="fas fa-book-open"></i> Students publish their own books, runs Peacemakers.</div>
+            </div>
+
+            <!-- Teacher -->
+            <div class="team-card">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%238fb4d9'/%3E%3Ctext x='50' y='70' font-size='44' text-anchor='middle' fill='white' font-family='Arial'%3ED%3C/text%3E%3C/svg%3E" alt="Mr Okafor" class="avatar-img">
+                <h4>Mr. David Okafor</h4>
+                <div class="role">Science specialist</div>
+                <div class="bio">Hands-on experiments, garden science, robotics coach.</div>
+                <div class="extra-content"><i class="fas fa-seedling"></i> Built worm composting bins with 4th graders.</div>
+            </div>
+
+            <!-- Head Boy -->
+            <div class="team-card">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%237fa9cc'/%3E%3Ctext x='50' y='70' font-size='44' text-anchor='middle' fill='white' font-family='Arial'%3EE%3C/text%3E%3C/svg%3E" alt="Elliot" class="avatar-img">
+                <h4>Elliot M.</h4>
+                <div class="role">Head Boy · Grade 5</div>
+                <div class="bio">Loves soccer, student council, helps organise morning assemblies.</div>
+                <div class="extra-content"><i class="fas fa-futbol"></i> Suggested buddy benches.</div>
+            </div>
+
+            <!-- Heard Girl -->
+            <div class="team-card">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%239cb9d6'/%3E%3Ctext x='50' y='70' font-size='44' text-anchor='middle' fill='white' font-family='Arial'%3EZ%3C/text%3E%3C/svg%3E" alt="Zara" class="avatar-img">
+                <h4>Zara A.</h4>
+                <div class="role">Head Girl · Grade 5</div>
+                <div class="bio">Art & reading, leads peer helpers, kind and thoughtful.</div>
+                <div class="extra-content"><i class="fas fa-paint-brush"></i> Started buddy reading program.</div>
+            </div>
+        </div>
+        <div class="teacher-note">
+            <i class="fas fa-chalkboard"></i> … Plus 22 more experienced teachers — music, PE, Maths, Librarian.
+        </div>
+    </div>
+
+    <!-- ACADEMICS PAGE with 5 groups -->
+    <div id="academics-page" class="page-card" style="display: none;">
+        <h2>📚 Academics & subject offerings</h2>
+        <p>We offer a broad, balanced curriculum across all year groups. Each form follows a structured set of 9 core and enriching subjects.</p>
+        <div class="forms-container">
+            <div class="form-card"><div class="form-title"><i class="fas fa-layer-group"></i> Form 1 · Foundation</div><div class="subject-grid"><div class="subject-item"><i class="fas fa-book"></i> Literacy</div><div class="subject-item"><i class="fas fa-calculator"></i> Mathematics</div><div class="subject-item"><i class="fas fa-globe"></i> Social Studies</div><div class="subject-item"><i class="fas fa-flask"></i> Basic Science</div><div class="subject-item"><i class="fas fa-paint-brush"></i> Art & Craft</div><div class="subject-item"><i class="fas fa-music"></i> Music</div><div class="subject-item"><i class="fas fa-heart"></i> Health Education</div><div class="subject-item"><i class="fas fa-leaf"></i> Environmental Studies</div><div class="subject-item"><i class="fas fa-running"></i> Physical Education</div></div></div>
+            <div class="form-card"><div class="form-title"><i class="fas fa-layer-group"></i> Form 2 · Exploring</div><div class="subject-grid"><div class="subject-item"><i class="fas fa-book-open"></i> English Language</div><div class="subject-item"><i class="fas fa-calculator"></i> Mathematics</div><div class="subject-item"><i class="fas fa-microscope"></i> Integrated Science</div><div class="subject-item"><i class="fas fa-flag"></i> Citizenship</div><div class="subject-item"><i class="fas fa-pencil-ruler"></i> Design & Tech</div><div class="subject-item"><i class="fas fa-compact-disc"></i> Performing Arts</div><div class="subject-item"><i class="fas fa-apple-alt"></i> Nutrition</div><div class="subject-item"><i class="fas fa-map-marked-alt"></i> Geography</div><div class="subject-item"><i class="fas fa-history"></i> History</div></div></div>
+            <div class="form-card"><div class="form-title"><i class="fas fa-layer-group"></i> Form 3 · Deepening</div><div class="subject-grid"><div class="subject-item"><i class="fas fa-book"></i> English Literature</div><div class="subject-item"><i class="fas fa-square-root-alt"></i> Mathematics</div><div class="subject-item"><i class="fas fa-dna"></i> Biology</div><div class="subject-item"><i class="fas fa-atom"></i> Physics/Chemistry</div><div class="subject-item"><i class="fas fa-landmark"></i> Civics</div><div class="subject-item"><i class="fas fa-laptop"></i> Computing</div><div class="subject-item"><i class="fas fa-language"></i> Second Language</div><div class="subject-item"><i class="fas fa-palette"></i> Fine Arts</div><div class="subject-item"><i class="fas fa-shoe-prints"></i> PE & Sports</div></div></div>
+            <div class="form-card"><div class="form-title"><i class="fas fa-layer-group"></i> Form 4 · Intermediate</div><div class="subject-grid"><div class="subject-item"><i class="fas fa-scroll"></i> English</div><div class="subject-item"><i class="fas fa-chart-line"></i> Advanced Math</div><div class="subject-item"><i class="fas fa-flask"></i> General Science</div><div class="subject-item"><i class="fas fa-globe-americas"></i> World Geography</div><div class="subject-item"><i class="fas fa-gavel"></i> Ethics & Values</div><div class="subject-item"><i class="fas fa-code"></i> Coding</div><div class="subject-item"><i class="fas fa-futbol"></i> Team Sports</div><div class="subject-item"><i class="fas fa-drum"></i> Music Ensemble</div><div class="subject-item"><i class="fas fa-carrot"></i> Garden & Ecology</div></div></div>
+            <div class="form-card"><div class="form-title"><i class="fas fa-layer-group"></i> Form 5 · Upper Elementary</div><div class="subject-grid"><div class="subject-item"><i class="fas fa-pen-fancy"></i> Creative Writing</div><div class="subject-item"><i class="fas fa-cubes"></i> Pre-Algebra</div><div class="subject-item"><i class="fas fa-heartbeat"></i> Human Body</div><div class="subject-item"><i class="fas fa-balance-scale"></i> Current Events</div><div class="subject-item"><i class="fas fa-robot"></i> Robotics</div><div class="subject-item"><i class="fas fa-theater-masks"></i> Drama</div><div class="subject-item"><i class="fas fa-campground"></i> Outdoor Education</div><div class="subject-item"><i class="fas fa-hand-holding-heart"></i> Service Learning</div><div class="subject-item"><i class="fas fa-chart-pie"></i> Financial Literacy</div></div></div>
+        </div>
+    </div>
+
+    <!-- ADMISSIONS PAGE with ALL PAYMENT DETAILS (updated FNB, ABSA, Stanbic + in person) -->
+    <div id="admissions-page" class="page-card" style="display: none;">
+        <h2>🎓 Admissions & Fees</h2>
+        <p>We welcome families living within the Springfield district and also accept a wide number of transfer students. 2025–26 enrollment is now open.</p>
+        <div style="background: #eef4fa; border-radius: 40px; padding: 20px; margin-bottom: 20px;">
+            <strong>📅 Deadline:</strong> May 30, 2025 (no application fee)
+        </div>
+
+        <!-- PAYMENTS DETAILS SECTION (modified as requested) -->
+        <div class="payments-details">
+            <h3 style="margin-top: 0; font-size: 1.8rem; border-left: 6px solid #1e3c5c; padding-left: 18px;">💰 Fees & Payment Details</h3>
+            
+            <div class="fee-grid">
+                <div class="fee-item"><h4><i class="fas fa-book-open"></i> Tuition (annual)</h4><div class="fee-amount">P4,850</div><div class="fee-note">Includes instructional materials</div></div>
+                <div class="fee-item"><h4><i class="fas fa-pencil-alt"></i> Registration</h4><div class="fee-amount">P150</div><div class="fee-note">One-Time, Non-Refundable</div></div>
+                <div class="fee-item"><h4><i class="fas fa-futbol"></i> Activity fee</h4><div class="fee-amount">P320</div><div class="fee-note">Clubs, Sports, Field trips</div></div>
+                <div class="fee-item"><h4><i class="fas fa-utensils"></i> Lunch program</h4><div class="fee-amount">P580 / year</div><div class="fee-note">Optional, Pay per term possible</div></div>
+                <div class="fee-item"><h4><i class="fas fa-clock"></i> Before/after care</h4><div class="fee-amount">P12 / hour</div><div class="fee-note">Flexible sign-up</div></div>
+                <div class="fee-item"><h4><i class="fas fa-laptop"></i> Technology</h4><div class="fee-amount">P90</div><div class="fee-note">Device & software access</div></div>
+            </div>
+
+            <!-- Bank account details: FNB, ABSA, Stanbic -->
+            <h4 style="font-size: 1.4rem; margin: 30px 0 10px;">🏦 Direct bank transfer (EFT)</h4>
+            <div class="bank-details-grid">
+                <div class="bank-card">
+                    <h4><i class="fas fa-university"></i> FNB</h4>
+                    <p><strong>Account name:</strong> Springfield Elementary</p>
+                    <p><strong>Account number:</strong> 62817045832</p>
+                    <p><strong>Branch code:</strong> 250655</p>
+                    <p><strong>Reference:</strong> StudentName_2025(year)</p>
+                </div>
+                <div class="bank-card">
+                    <h4><i class="fas fa-university"></i> ABSA</h4>
+                    <p><strong>Account name:</strong> Springfield Elementary</p>
+                    <p><strong>Account number:</strong> 4072358912</p>
+                    <p><strong>Branch code:</strong> 632005</p>
+                    <p><strong>Reference:</strong> StudentName_2025(year)</p>
+                </div>
+                <div class="bank-card">
+                    <h4><i class="fas fa-university"></i> Stanbic Bank</h4>
+                    <p><strong>Account name:</strong> Springfield Elementary</p>
+                    <p><strong>Account number:</strong> 0918273645</p>
+                    <p><strong>Branch code:</strong> 210009</p>
+                    <p><strong>Reference:</strong> StudentName_2025(year)</p>
+                </div>
+            </div>
+
+            <!-- In person payment option -->
+            <div class="in-person-payment">
+                <i class="fas fa-hand-holding-usd"></i>
+                <span><strong>Pay in person</strong> — Cash, cheque or card accepted at our finance office (Room 101, Main Building). Office hours Mon–Fri 8:00–15:30.</span>
+            </div>
+
+            <div class="scholarship-note">
+                <i class="fas fa-hand-holding-heart"></i>
+                <span><strong>Scholarships & financial aid available</strong> — up to 40% tuition reduction for qualifying families. Contact our finance office for a confidential discussion.</span>
+            </div>
+
+            <p style="margin-top: 24px; display: flex; gap: 18px; flex-wrap: wrap;">
+                <span><i class="fas fa-check-circle" style="color:#1e7e34;"></i> Monthly payment plans available</span>
+                <span><i class="fas fa-check-circle" style="color:#1e7e34;"></i> 5% sibling discount</span>
+                <span><i class="fas fa-check-circle" style="color:#1e7e34;"></i> Military family discount</span>
+            </p>
+            <p style="border-top: 1px dashed #acc6e0; padding-top: 20px; margin-top: 10px;">
+                📧 For billing questions: <a href="mailto:kutlokedi@gmail.com" class="clickable-link">kutlokedi@gmail.com</a>  
+                |  📞 <a href="tel:+77523409" class="clickable-link">77523409</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- UPDATED CONTACT PAGE with white space fully utilized + FAQ integrated -->
+    <div id="contact-page" class="page-card" style="display: none;">
+        <h2>📬 Get in touch with us</h2>
+        <p style="font-size: 1.1rem;">We're here to help! Choose any of the options below to reach our team.</p>
+        
+        <div class="contact-grid">
+            <!-- Left Column - Contact Cards -->
+            <div class="contact-info">
+                <!-- Quick Contact Card -->
+                <div class="contact-card">
+                    <h3><i class="fas fa-bolt" style="color: #ffb347; margin-right: 10px;"></i> Quick Contact</h3>
+                    
+                    <div class="contact-detail-row">
+                        <div class="contact-detail-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="contact-detail-text">
+                            <span class="label">Main Office</span>
+                            <a href="tel:+77523409">77523409</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail-row">
+                        <div class="contact-detail-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="contact-detail-text">
+                            <span class="label">Attendance</span>
+                            <a href="tel:+75854577">75854577</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail-row">
+                        <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-detail-text">
+                            <span class="label">General Inquiries</span>
+                            <a href="mailto:kutlokedi@gmail.com">kutlokedi@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail-row">
+                        <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-detail-text">
+                            <span class="label">Admissions</span>
+                            <a href="mailto:kutlokedi@gmail.com">kutlokedi@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail-row">
+                        <div class="contact-detail-icon"><i class="fas fa-fax"></i></div>
+                        <div class="contact-detail-text">
+                            <span class="label">Fax</span>
+                            <span>+267 39715399</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hours Card -->
+                <div class="contact-card">
+                    <h3><i class="far fa-clock" style="color: #1e3c5c; margin-right: 10px;"></i> Office Hours</h3>
+                    
+                    <div class="hours-grid">
+                        <div class="hours-item">
+                            <div class="day">Mon - Thu</div>
+                            <div class="time">7:30 AM - 4:00 PM</div>
+                        </div>
+                        <div class="hours-item">
+                            <div class="day">Friday</div>
+                            <div class="time">7:30 AM - 3:30 PM</div>
+                        </div>
+                        <div class="hours-item">
+                            <div class="day">Saturday</div>
+                            <div class="time">Closed</div>
+                        </div>
+                        <div class="hours-item">
+                            <div class="day">Sunday</div>
+                            <div class="time">Closed</div>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 15px; font-size: 0.95rem; background: #eef3fa; padding: 10px; border-radius: 30px;">
+                        <i class="fas fa-clock" style="color: #1e3c5c;"></i> Summer hours (Jun-Aug): Mon-Thu 8:00 AM - 3:00 PM, Fri 8:00 AM - 12:00 PM
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Right Column - More Contact Options -->
+            <div>
+                <!-- Location Card -->
+                <div class="contact-card">
+                    <h3><i class="fas fa-map-marker-alt" style="color: #e05a5a; margin-right: 10px;"></i> Visit Our Campus</h3>
+                    
+                    <div style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; flex-wrap: wrap;">
+                        <i class="fas fa-school" style="font-size: 2.5rem; color: #1e3c5c;"></i>
+                        <div>
+                            <p style="font-weight: 600; font-size: 1.2rem;">1420 Learning Lane</p>
+                            <p style="color: #4a6f8f;">Springfield, IL 62701</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://maps.google.com/?q=1420+Learning+Lane+Springfield+IL" target="_blank" style="display: inline-block; background: #1e3c5c; color: white; padding: 12px 28px; border-radius: 50px; text-decoration: none; font-weight: 500; margin-bottom: 15px;">
+                        <i class="fas fa-map-marked-alt"></i> Get Directions on Google Maps
+                    </a>
+                    
+                    <div class="map-placeholder">
+                        <i class="fas fa-map" style="font-size: 2rem; margin-right: 10px;"></i> Interactive Map Available
+                    </div>
+                </div>
+                
+                <!-- Social Media Card -->
+                <div class="contact-card">
+                    <h3><i class="fas fa-hashtag" style="color: #3897f0; margin-right: 10px;"></i> Connect With Us Online</h3>
+                    
+                    <div class="social-media-grid">
+                        <div class="social-contact-item">
+                            <i class="fab fa-facebook" style="color: #1877F2;"></i>
+                            <a href="#" onclick="window.open('https://www.facebook.com/profile.php?id=100028656563236', '_blank'); return false;">Facebook</a>
+                        </div>
+                        <div class="social-contact-item">
+                            <i class="fab fa-instagram" style="color: #d62976;"></i>
+                            <a href="#" onclick="window.open('https://www.instagram.com/kutlo.marumo/', '_blank'); return false;">Instagram</a>
+                        </div>
+                        <div class="social-contact-item">
+                            <i class="fab fa-x-twitter" style="color: #000;"></i>
+                            <a href="#" onclick="window.open('https://x.com/kedi_kutlo', '_blank'); return false;">X (Twitter)</a>
+                        </div>
+                        <div class="social-contact-item">
+                            <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                            <a href="#" onclick="window.open('https://wa.me/12175558700', '_blank'); return false;">WhatsApp</a>
+                        </div>
+                        <div class="social-contact-item">
+                            <i class="fab fa-youtube" style="color: #FF0000;"></i>
+                            <a href="#" onclick="window.open('https://www.youtube.com/@KutloKedi', '_blank'); return false;">YouTube</a>
+                        </div>
+                        <div class="social-contact-item">
+                            <i class="fab fa-linkedin" style="color: #0A66C2;"></i>
+                            <a href="#" onclick="window.open('https://www.linkedin.com/in/kutlo-kedikanetswe-9bb510271/', '_blank'); return false;">LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Emergency Contact -->
+                <div class="emergency-badge">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <strong>After-hours emergency?</strong><br>
+                        <span style="color: #4a6f8f;">Call our security desk: <a href="tel:+77523409" style="color: #1e3c5c; font-weight: 700; text-decoration: none;">77523409</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Department Contacts Footer -->
+        <div style="margin-top: 40px; background: #e3eefa; border-radius: 60px; padding: 20px 30px;">
+            <h4 style="margin-bottom: 15px; color: #1e3c5c;">📋 Department Directory</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); gap: 15px;">
+                <div><strong>Finance:</strong> <a href="tel:+77523409" class="clickable-link">77523409</a></div>
+                <div><strong>Principal's Office:</strong> <a href="tel:+77523409" class="clickable-link">77523409</a></div>
+                <div><strong>Nurse's Office:</strong> <a href="tel:+77523409" class="clickable-link">77523409</a></div>
+                <div><strong>Transportation:</strong> <a href="tel:+77523409" class="clickable-link">77523409</a></div>
+                <div><strong>PTA:</strong> <a href="mailto:kutlokedi@gmail.com" class="clickable-link">kutlokedi@gmail.com</a></div>
+            </div>
+        </div>
+
+        <!-- FAQ SECTION (with animation) -->
+        <div class="faq-container">
+            <h3 style="border-left: 6px solid #2f6190; padding-left: 20px; margin: 40px 0 20px;"><i class="fas fa-question-circle"></i> Frequently asked questions</h3>
+            
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-child"></i> What are the school hours?</div>
+                <div class="faq-answer">Grades K–2: 8:30 a.m. – 2:45 p.m.  |  Grades 3–5: 8:15 a.m. – 3:00 p.m.  <i class="fas fa-check-circle"></i> Early drop-off starts at 7:30.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-utensils"></i> Does the school provide lunch?</div>
+                <div class="faq-answer">Yes — hot lunch program (P580/year) with vegetarian, halal and allergy‑friendly options. Free/reduced price applications available.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-bus"></i> Is bus transportation available?</div>
+                <div class="faq-answer">Springfield elementary covers most areas within a 5‑mile radius. Routes are listed on the website. Contact transportation at <a href="tel:+77523409" style="color:#1e3c5c;">77523409</a>.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-calendar-alt"></i> When do school tours take place?</div>
+                <div class="faq-answer">We offer tours every Tuesday at 9:30 a.m. during term time. Please sign up via our admissions office.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-tag"></i> Do you offer sibling discounts?</div>
+                <div class="faq-answer">Yes — 5% discount for the second child, 7% for the third. Combined with our financial aid program.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-hand-holding-heart"></i> How do I apply for tuition assistance?</div>
+                <div class="faq-answer">Request a confidential form from the finance office (<a href="mailto:kutlokedi@gmail.com" style="color:#1e3c5c;">kutlokedi@gmail.com</a>). Applications due by April 15.</div>
+            </div>
+            <div class="faq-cta">
+                <i class="fas fa-headset fa-2x" style="color:#1e3c5c;"></i>
+                <span><strong>Still have questions?</strong> Call our office <a href="tel:+77523409" class="clickable-link">77523409</a> or email <a href="mailto:kutlokedi@gmail.com" class="clickable-link">kutlokedi@gmail.com</a></span>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- FOOTER (Connect section removed, space utilized by making Contact column more spacious) -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <div class="logo-picture">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%231e3c5c'/%3E%3Ctext x='50' y='70' font-size='48' text-anchor='middle' fill='white' font-family='Arial'%3E📚%3C/text%3E%3C/svg%3E" alt="footer logo">
+                    </div>
+                    <span>Springfield</span>
+                </div>
+                <p>Where children discover the joy of learning.<br>Accredited by the state board of education.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Explore</h5>
+                <ul>
+                    <li><a href="#home" data-page="home">Home</a></li>
+                    <li><a href="#about" data-page="about">About</a></li>
+                    <li><a href="#leadership" data-page="leadership">Leadership</a></li>
+                    <li><a href="#academics" data-page="academics">Academics</a></li>
+                    <li><a href="#admissions" data-page="admissions">Admissions</a></li>
+                </ul>
+            </div>
+            <!-- removed the entire Connect column, now the Contact column gets more visual space -->
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a href="tel:+77523409" class="footer-phone"><i class="fas fa-phone"></i> 77523409</a></li>
+                    <li><i class="fas fa-map-marker-alt"></i> 1420 Learning Ln, Springfield</li>
+                    <li><i class="fas fa-clock"></i> MON–FRI 7:30–16:00</li>
+                    <li><i class="fas fa-envelope"></i> <a href="kutlokedi@gmail.com" style="color:#c0d4e9; text-decoration:none;">kutlokedi@gmail.com</a></li>
+                    <li><i class="fas fa-globe"></i> www.springfield-elem.edu</li>
+                </ul>
+            </div>
+            <!-- optional extra spacer to use leftover space elegantly, but we simply keep 3 columns with the third expanded -->
+            <div class="footer-col">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="#contact" data-page="contact">Help & FAQ</a></li>
+                    <li><a href="#" onclick="window.open('https://www.facebook.com/profile.php?id=100028656563236', '_blank'); return true;"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#" onclick="window.open('https://www.instagram.com/kutlo.marumo/', '_blank'); return true;"><i class="fab fa-instagram"></i> Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <i class="fas fa-copyright"></i> 2025 Springfield Elementary. All rights reserved. | <i class="fas fa-heart" style="color: #e06b6b;"></i> DESIGNED BY LEPAKO KUTLO
+        </div>
+    </div>
+</footer>
+
+<!-- simple hash router + gallery rotation script (no forms) -->
+<script>
+    (function() {
+        const pages = {
+            home: document.getElementById('home-page'),
+            about: document.getElementById('about-page'),
+            leadership: document.getElementById('leadership-page'),
+            academics: document.getElementById('academics-page'),
+            admissions: document.getElementById('admissions-page'),
+            contact: document.getElementById('contact-page')
+        };
+        const navLinks = document.querySelectorAll('.nav-link, footer a[data-page]');
+        
+        function showPage(pageId) {
+            Object.values(pages).forEach(p => { if (p) p.style.display = 'none'; });
+            if (pages[pageId]) pages[pageId].style.display = 'block';
+            else pages.home.style.display = 'block';
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const linkPage = link.getAttribute('data-page');
+                if (linkPage === pageId) link.classList.add('active');
+                else link.classList.remove('active');
+            });
+        }
+        
+        function handleHash() {
+            const hash = window.location.hash.substring(1);
+            const valid = ['home','about','leadership','academics','admissions','contact'];
+            if (valid.includes(hash)) showPage(hash);
+            else { showPage('home'); window.location.hash = 'home'; }
+        }
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('data-page');
+                if (page) window.location.hash = page;
+            });
+        });
+        
+        window.addEventListener('hashchange', handleHash);
+        if (!window.location.hash || window.location.hash === '#') window.location.hash = 'home';
+        else handleHash();
+
+        // ROTATING GALLERY for home page (starts automatically)
+        (function rotateGallery() {
+            const slides = document.querySelectorAll('#home-page .gallery-slide');
+            const dots = document.querySelectorAll('#galleryDots .dot');
+            if (!slides.length) return;
+
+            let currentIdx = 0;
+            const totalSlides = slides.length;
+
+            function showSlide(index) {
+                if (index < 0) index = totalSlides - 1;
+                if (index >= totalSlides) index = 0;
+                slides.forEach((s, i) => {
+                    s.classList.toggle('active', i === index);
+                });
+                dots.forEach((d, i) => {
+                    d.classList.toggle('active-dot', i === index);
+                });
+                currentIdx = index;
+            }
+
+            // attach click to dots
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => showSlide(i));
+            });
+
+            // auto advance every 5 seconds
+            setInterval(() => {
+                showSlide(currentIdx + 1);
+            }, 5000);
+        })();
+    })();
+</script>
+
+<!-- no extra style changes, but all previously added styles are already in the head -->
+</body>
+</html>
